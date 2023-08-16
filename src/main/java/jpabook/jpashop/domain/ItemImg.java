@@ -27,9 +27,9 @@ public class ItemImg {
     private Item item; // 상품 엔티티와 다대일 단방향 관계로 매핑 (상품1개 -> 사진 여러개)
 
 //    추후 이미지 수정시 사용
-    public void updateItemImg(String oriImgName, String imgName, String imgUrl) {
+    public void updateItemImg(String oriImgName, String imgName, String imgPath) {
         this.oriImgName = oriImgName;
         this.imgName = imgName;
-        this.imgPath = imgUrl;
+        this.imgPath = imgPath;
     }
 }

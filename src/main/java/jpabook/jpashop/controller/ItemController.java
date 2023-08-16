@@ -26,23 +26,23 @@ public class ItemController {
         return "items/createItemForm";
     }
 
-    @PostMapping("/items/new")
-    public String create(@ModelAttribute ItemForm form, MultipartFile imgFile) throws IOException {
-//        ItemImg attachFile = itemService.saveItem(form.get);
-        goods goods = new goods();
-        goods.setName(form.getName());
-        goods.setPrice(form.getPrice());
-        goods.setStockQuantity(form.getStockQuantity());
-        itemService.saveItem(goods, imgFile);
-        return "redirect:/";
-    }
-
-    @GetMapping("/items")
-    public String list(Model model) {
-        List<Item> items = itemService.findItems();
-        model.addAttribute("items", items);
-        return "items/itemList";
-    }
+//    @PostMapping("/items/new")
+//    public String create(@ModelAttribute ItemForm form, MultipartFile imgFile) throws IOException {
+////        ItemImg attachFile = itemService.saveItem(form.get);
+//        goods goods = new goods();
+//        goods.setName(form.getName());
+//        goods.setPrice(form.getPrice());
+//        goods.setStockQuantity(form.getStockQuantity());
+//        itemService.saveItem(goods, imgFile);
+//        return "redirect:/";
+//    }
+//
+//    @GetMapping("/items")
+//    public String list(Model model) {
+//        List<Item> items = itemService.findItems();
+//        model.addAttribute("items", items);
+//        return "items/itemList";
+//    }
 
 //    @GetMapping("items/{itemId}/edit")
 //    public String updateItemForm(@PathVariable("itemId") Long itemId, Model model) {

@@ -21,11 +21,12 @@ import static javax.persistence.FetchType.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "order_id")
     private Long id;
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = FetchType.LAZY) // 한명이 여러개의 주문 가능
     @JoinColumn(name = "member_id")
     private Member member;
 
@@ -36,12 +37,13 @@ public class Order {
     @JsonIgnore
     @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "delivery_id")
-    private Delivery delivery;
+    private Delivery delivery; //주소
 
     private LocalDateTime orderDate; //주문시간
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status; //주문상태 [ORDER, CANCEL]
+
 
     //==연관관계 메서드==//
     public void setMember(Member member) {
@@ -49,22 +51,31 @@ public class Order {
         member.getOrders().add(this);
     }
 
-    public void addOrderItem(OrderItem orderItem) {
-        orderItems.add(orderItem);
-        orderItem.setOrder(this);
-    }
 
     public void setDelivery(Delivery delivery) {
         this.delivery = delivery;
         delivery.setOrder(this);
     }
 
+    // cascade:  부모가 바뀌면 자식도 바뀜 (부모-자식 연동)
+    // orphanRemoval = true 를 하면은 고아 객체를 지울 수 있다.
+    // 원래 디비에는 one to many 가 없다. 단방향이기 때문에! => 양방향 매핑을 위해 적음 (order - orderId)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> orderItems1 = new ArrayList<>();
+
+    // 생성한 주문 상품 객체를 이용해서 주문 객체를 만들거임
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem); // orderItems 에 주문 상품 정보들 넣어줌
+        orderItem.setOrder(this); // orderItems 과 양방향 매핑이기 때문에 orderItem 에다가도 order 객체를 넣어줌 (orderItems 은 order 객체임)
+    }
+
     //==생성 메서드==//
-    public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems) {
+//    public static Order createOrder(Member member, Delivery delivery, List<OrderItem> orderItemList) {
+    public static Order createOrder(Member member,List<OrderItem> orderItemList) {
         Order order = new Order();
         order.setMember(member);
-        order.setDelivery(delivery);
-        for (OrderItem orderItem : orderItems) {
+//        order.setDelivery(delivery);
+        for (OrderItem orderItem : orderItemList) {
             order.addOrderItem(orderItem);
         }
         order.setStatus(OrderStatus.ORDER);

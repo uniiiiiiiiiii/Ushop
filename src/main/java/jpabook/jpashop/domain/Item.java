@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public abstract class Item extends BaseEntity{
+public class Item extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,8 +42,6 @@ public abstract class Item extends BaseEntity{
 //    다대다 매핑을 하면 안된다는데 다른방법을 구상해보자.
 //    @ManyToMany(mappedBy = "items")
 //    private List<Category> categories = new ArrayList<>();
-
-
 
 
     //==비즈니스 로직==//
