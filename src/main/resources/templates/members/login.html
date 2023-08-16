@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+</head>
+<body>
+<div th:replace="fragments/bodyHeader :: bodyHeader" />
+
+
+<div class="form-structor">
+  <div class="signup">
+    <h2 class="form-title" id="signup">ShallWeShare?</h2>
+    <form method="post" action="userSignIn_yn">
+      <div class="form-holder">
+        <input type="text" class="input11"name="u_sns_id" class="input" placeholder="Id" />
+        <input type="password" class="input11" name="u_pwd" placeholder="Password" />
+      </div>
+      <input type="submit" class="submit-btn" value="로그인">
+  </div>
+  </form>
+  <div class="wrap">
+    <div>
+      <a class="kakao"
+         href="https://kauth.kakao.com/oauth/authorize?client_id=97b3eb27ba108e2e3f48aa5cbed11254&redirect_uri=http://localhost:8181/shallweshare/users/kakaoLogin&response_type=code">
+
+        <img
+                src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_medium_wide.png"
+                style="height: 60px">
+      </a>
+    </div>
+  </div>
+  <div class="ttext">
+    <!--     ><a class="nav-link" href="list"> -->
+    <a class= linkyun1 href="#">아이디 찾기</a>
+    <span class="txt">|</span>
+    <a class= linkyun2  href="#">비밀번호 찾기</a>
+    <span class="txt">|</span>
+    <a class= linkyun2  href="userSignUp">회원가입</a>
+  </div>
+
+</div>
+<div th:replace="fragments/footer :: footer" />
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" >
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+
+    <div class="row" style="margin:2% 4%;">
+        <div class="col-lg-2">
+             <div th:replace="fragments/sidebar :: sidebar"/>
+        </div>
+        <div class="col-lg-10">
+            <h2>내 스토어_상품관리</h2>
+            <div style="position=center">
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>상품명</th>
+                        <th>가격</th>
+                        <th>재고수량</th>
+                        <th><a class="btn btn-dark" href="/items/new">등록</a></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="item : ${items}">
+                        <td th:text="${item.id}"></td>
+                        <td th:text="${item.name}"></td>
+                        <td th:text="${item.price}"></td>
+                        <td th:text="${item.stockQuantity}"></td>
+                        <td>
+                            <a href="#" th:href="@{/items/{id}/edit (id=${item.id})}" class="btn btn-success" role="button">수정</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+
+    </div>
+    <div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

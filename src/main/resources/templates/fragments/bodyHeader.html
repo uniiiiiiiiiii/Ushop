@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="header" th:fragment="bodyHeader">
+    <span>
+   <nav class="navbar navbar-expand-md bg-light  sticky-top border-bottom" data-bs-theme="dark">
+        <div class="container">
+
+            <div class="offcanvas-body" >
+              <!-- <ul class="navbar-nav flex-grow-1 justify-content-center"> -->
+                <ul class="nav justify-content-center"></ul>
+                <!-- class="nav justify-content-center" -->
+                <li class="nav-item"><a class="nav-link" href="#">
+                 <img src="img/icon.png" width="120" height="80"></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#">Product</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Q&A</a></li>
+
+                </ul>
+            </div>
+
+            <li class="nav-item">
+              <a href="/"><img class="img1" src="img/cart.png" width="30" height="30"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="/"><img class="img1" src="img/my.png" width="30" height="30"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <button type="button" class="btn btn-outline-dark me-2">LOGOUT</button>&nbsp;&nbsp;
+            </li>
+
+<!--             <li class="nav-item">-->
+<!--              <button type="button" class="btn btn-outline-dark me-2">LOGIN</button>-->
+<!--              <button type="button" class="btn btn-outline-dark me-2">SIGN-UP</button>-->
+<!--            </li>-->
+
+          </div>
+
+</nav>
+<script src="./js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</span>
+</div>

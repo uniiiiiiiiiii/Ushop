@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div class="row" style="margin: 2%">
+
+        <div class="col-lg-2">
+
+        </div>
+        <div class="col-lg-4">
+            <img src="img/1.jpg"  width="95%">
+        </div>
+
+        <div class="col-lg-4">
+            <form role="form" action="/order" method="post">
+
+                <!--        <div class="form-group">-->
+                <!--            <label for="member">주문회원</label>-->
+                <!--            <select name="memberId" id="member" class="form-control">-->
+                <!--                <option value="">회원선택</option>-->
+                <!--                <option th:each="member : ${members}"-->
+                <!--                        th:value="${member.id}"-->
+                <!--                        th:text="${member.name}" />-->
+                <!--            </select>-->
+                <!--        </div>-->
+
+                <div class="form-group">
+                    <select name="itemId" id="item" class="form-control">
+                        <option value="">상품선택</option>
+                        <option th:each="item : ${items}"
+                                th:value="${item.id}"
+                                th:text="${item.name}" />
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="count">주문수량</label>
+                    <input type="number" name="count" class="form-control" id="count" placeholder="주문 수량을 입력하세요">
+                </div>
+
+                <button type="submit" class="btn btn-primary">주문하기</button>
+                <button type="submit" class="btn btn-primary">장바구니에 담기</button>
+            </form>
+        </div>
+        <div class="col-lg-2">
+
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer" />
+
+<script src="./js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
