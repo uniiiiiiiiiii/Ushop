@@ -41,7 +41,9 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private Address address;
+//    private Address address;
+
+    private String address;
 
     @JsonIgnore
     @OneToMany(mappedBy = "member")
@@ -52,8 +54,9 @@ public class Member {
         Member member = Member.builder()
                 .name(memberFormDto.getName())
                 .email(memberFormDto.getEmail())
-//                .address(memberFormDto.getAddress())
-                .memPwd( passwordEncoder.encode( memberFormDto.getPassword() ) ) // BCryptPasswordEncoder Bean 을 파라미터로 넘겨서 비번을 암호화함
+                .memId(memberFormDto.getMemId())
+                .address(memberFormDto.getAddress())
+                .memPwd( passwordEncoder.encode( memberFormDto.getMemPwd() ) ) // BCryptPasswordEncoder Bean 을 파라미터로 넘겨서 비번을 암호화함
                 .role(Role.ADMIN)
 //                .role(Role.)
                 .build();

@@ -17,7 +17,5 @@ public class MemberForm {
     @NotEmpty(message = "비밀번호는 필수 입니다")
     private String memPwd;
 
-    private String city;
-    private String street;
-    private String zipcode;
+
 }

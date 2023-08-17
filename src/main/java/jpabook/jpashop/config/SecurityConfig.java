@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter { // WebSecurit
         http.formLogin()
                 .loginPage("/members/login") // 로그인 페이지 url
                 .defaultSuccessUrl("/") // 로그인 성공 시 url
-                .usernameParameter("email") // 로그인 시 사용할 파라미터 이름 지정 (username 에 들어갈 변수?)
+                .usernameParameter("memid") // 로그인 시 사용할 파라미터 이름 지정 (username 에 들어갈 변수?)
                 .failureUrl("/members/login/error") // 로그인 실패 시 url
                 .and()
                 .logout()
@@ -35,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter { // WebSecurit
 
         http.authorizeRequests()
                 .mvcMatchers("/","/members/**","/item/**","/images/**").permitAll() // 여기는 모두가 다 접근
+                .mvcMatchers("/mypage/sell/**").hasAnyRole("SELLER","ADMIN")
                 .mvcMatchers("/admin/**").hasRole("ADMIN") // admin 만 접근
                 .anyRequest().authenticated(); // 나머지 경로들은 인증만 요구! (로그인 하면 다 접근 ㄱㄴ)
 

@@ -10,15 +10,16 @@
 
 <div class="form-structor">
   <div class="signup">
-    <h2 class="form-title" id="signup">ShallWeShare?</h2>
-    <form method="post" action="userSignIn_yn">
+    <h2 class="form-title" id="signup">Ushop</h2>
+    <form method="post" action="members/login">
       <div class="form-holder">
         <input type="text" class="input11"name="u_sns_id" class="input" placeholder="Id" />
         <input type="password" class="input11" name="u_pwd" placeholder="Password" />
       </div>
       <input type="submit" class="submit-btn" value="로그인">
-  </div>
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
   </form>
+  </div>
   <div class="wrap">
     <div>
       <a class="kakao"
@@ -30,6 +31,7 @@
       </a>
     </div>
   </div>
+
   <div class="ttext">
     <!--     ><a class="nav-link" href="list"> -->
     <a class= linkyun1 href="#">아이디 찾기</a>

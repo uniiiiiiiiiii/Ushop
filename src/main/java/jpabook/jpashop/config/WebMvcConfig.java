@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
-    // 아까 application.properties 에 적었던 uploadPath 여기다가 대입
+    // application.properties 에 적었던 uploadPath 여기다가 대입
     @Value("${uploadPath}")
     String uploadPath;
 
